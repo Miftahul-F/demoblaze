@@ -18,5 +18,5 @@
 7. In terminal write robot -d Reports Steps
 8. Click ENTER
 
-Reports of Test Cases
+## Reports of Test Cases
 ![image](https://user-images.githubusercontent.com/96649760/160326681-0b69e669-cb7a-484c-83e3-ea95d97516a1.png)
