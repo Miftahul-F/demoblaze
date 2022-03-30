@@ -19,4 +19,5 @@
 8. Click ENTER
 
 ## Reports of Test Cases
+![image](https://user-images.githubusercontent.com/96649760/160841148-6b7f41c5-e1e6-4f23-80a2-1804f2b19712.png)
 
