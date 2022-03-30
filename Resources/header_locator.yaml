@@ -1,0 +1,6 @@
+button_home:                     //*[contains(text(),"Home")]
+button_contact:                  //a[@data-target="#exampleModal"]
+button_about:                    //a[@data-target="#videoModal"]
+button_cart:                     //a[@id="cartur"]
+button_login:                    //a[@id="login2"]
+button_signup:                   //a[@id="signin2"]

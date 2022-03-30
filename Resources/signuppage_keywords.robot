@@ -1,7 +1,8 @@
 *** Settings ***
 Documentation                       Sign up page
 Library                             SeleniumLibrary
-Variables                           ../Resources/locator.yaml
+Variables                           ../Resources/header_locator.yaml
+Variables                           ../Resources/signup_locator.yaml
 
 *** Keywords ***
 Open Browser Chrome
@@ -11,23 +12,26 @@ Open Browser Chrome
 Go to demoblaze page
     Go To                           https://www.demoblaze.com/index.html
 
-Click button Sign up on Home page
-    Click Element                   //*[@id="signin2"]
+Navigate to sign up menu
+    Click Element                   ${button_signup}
+    Wait Until Element Is Visible   ${ok_signup}
 
-Wait pop up sign up
-    Wait Until Element Is Visible  //*[@id="signInModalLabel"]
+Inputting Username
+    [Arguments]                     ${user}
+    Input Text                      ${input_user}                                       ${user}
 
-I am inputting any Username
-    [Arguments]                     ${username}
-    Input Text                      //input[@id="sign-username"]                        ${username}
-
-I am inputting any Password
-    [Arguments]                     ${password}
-    Input Text                      //input[@id="sign-password"]                        ${password}
+Inputting Password
+    [Arguments]                     ${pswd}
+    Input Text                      ${input_pswd}                                       ${pswd}
 
 Click button Sign up
-    Click Element                   //*[@id="signInModal"]/div/div/div[3]/button[2]
+    Click Element                   ${ok_signup}
 
-Click Ok
-    Handle Alert
+Appear allert This user already exist
+    Alert Should Be Present         This user already exist.                            ACCEPT
 
+Appear allert Please fill out Username and Password
+    Alert Should Be Present         Please fill out Username and Password.              ACCEPT
+
+Verify sign up success
+    Alert Should Be Present         Sign up successful.                                 ACCEPT

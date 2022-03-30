@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation                       Header Page
 Library                             SeleniumLibrary
-Variables                           ../Resources/locator.yaml
+Variables                           ../Resources/header_locator.yaml
 
 *** Keywords ***
 Open Browser Chrome
@@ -12,37 +12,34 @@ Go to demoblaze page
     Go To                           https://www.demoblaze.com/index.html
 
 Click Button Home
-    Click Element                   //*[@id="navbarExample"]/ul/li[1]/a
+    Click Element                   ${button_home}
 
 Click Button Contact
-    Click Element                   //*[@id="navbarExample"]/ul/li[2]/a
+    Click Element                   ${button_contact}
 
 Click Button About us
-    Click Element                   //*[@id="navbarExample"]/ul/li[3]/a
+    Click Element                   ${button_about}
 
 Click Button Cart
-    Click Element                   //*[@id="cartur"]
+    Click Element                   ${button_cart}
 
 Click Button Log in
-    Click Element                   //*[@id="login2"]
+    Click Element                   ${button_login}
 
 Click Button Sign up
-    Click Element                   //*[@id="signin2"]
-
-Verify home page 
-    Page Should Contain Element     //*[@id="nava"]
+    Click Element                   ${button_signup}
 
 Verify button contact
-    Wait Until Element Is Visible   //*[@id="exampleModalLabel"]
+    Wait Until Element Is Visible   //label[contains(text(),"Email")]
 
 Verify button about us
-    Wait Until Element Is Visible   //*[@id="videoModalLabel"]
+    Wait Until Element Is Visible   //h5[contains(text(),"About us")]
 
 Verify button cart
-    Page Should Contain Element     //*[@id="page-wrapper"]/div/div[1]/h2
+    Page Should Contain Element     //*[contains(text(),"Place Order")]
 
 Verify button log in
-    Wait Until Element Is Visible   //*[@id="logInModalLabel"]
+    Wait Until Element Is Visible   //button[@onclick="logIn()"]
 
 Verify button sign up
-    Wait Until Element Is Visible   //*[@id="signInModalLabel"]
+    Wait Until Element Is Visible   //button[@onclick="register()"]

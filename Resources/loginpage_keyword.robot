@@ -1,7 +1,12 @@
 *** Settings ***
 Documentation                       Log in Page
 Library                             SeleniumLibrary
-Variables                           ../Resources/locator.yaml
+Variables                           ../Resources/header_locator.yaml
+Variables                           ../Resources/login_locator.yaml
+
+*** Variables ***
+&{username}        validUser=kcs1234            invalidUser=kcs123
+&{password}        validPass=kcs1234            invalidPass=kcs123
 
 *** Keywords ***
 Open Browser Chrome
@@ -11,36 +16,26 @@ Open Browser Chrome
 Go to demoblaze page
     Go To                           https://www.demoblaze.com/index.html
 
-Click button Log in on Home page
-    Click Element                   //*[@id="login2"]
+Navigate to log in menu
+    Click Element                   ${button_login}
+    Wait Until Element Is Visible   //button[@onclick="logIn()"]
 
-Wait pop up log in
-    Wait Until Element Is Visible  //*[@id="logInModalLabel"]
-
-I am inputting valid Username
+Inputting Username
     [Arguments]                     ${username}
-    Input Text                      //input[@id="loginusername"]                        ${username}
+    Input Text                      ${input_username}                                 ${username}
 
-I am inputting valid Password
+Inputting Password
     [Arguments]                     ${password}
-    Input Text                      //input[@id="loginpassword"]                       ${password}
-
-I am inputting invalid Username
-    [Arguments]                     ${username}
-    Input text                      //input[@id="loginusername"]                        ${username}
-
-I am inputting invalid Password
-    [Arguments]                     ${password}
-    Input text                      //input[@id="loginpassword"]                       ${password}
+    Input Text                      ${input_password}                                 ${password}
 
 Click button log in
-    Click Element                   //*[@id="logInModal"]/div/div/div[3]/button[2]
+    Click Element                   ${ok_login}
 
 CLick button log out
-    Click Element                   //*[@id="logout2"]
+    Click Element                   ${button_logout}
 
 Verify log in success
-    Wait Until Page Contains Element    //*[@id="nameofuser"]                            
+    Wait Until Page Contains Element   ${welcome_username}                           
 
 Appear allert Please fill out Username and Password
     Alert Should Be Present         Please fill out Username and Password.              ACCEPT
@@ -52,15 +47,12 @@ Appear allert Wrong password
     Alert Should Be Present         Wrong password.                                     ACCEPT
 
 Verify log out success
-    Wait Until Page Contains Element    //*[@id="login2"]
+    Wait Until Page Contains Element     ${button_login}
 
-Log in success
+Login success
     Go to demoblaze page
-    Click button Log in on Home page
-    Wait pop up log in
-    Sleep                                   2s
-    I am inputting valid Username           username=kcs1234
-    I am inputting valid Password           password=kcs1234
+    Navigate to log in menu
+    Inputting Username                      ${username.validUser}
+    Inputting Password                      ${password.validPass}
     Click button log in
-    Verify log in success
-    Sleep                                   3s
+    Wait Until Element Is Visible           ${button_logout}                       

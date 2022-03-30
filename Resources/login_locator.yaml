@@ -1,0 +1,5 @@
+input_username:                     //input[@id="loginusername"]
+input_password:                     //input[@id="loginpassword"]
+ok_login:                           //button[@onclick="logIn()"]
+button_logout:                      //*[@id="logout2"]
+welcome_username:                   //*[@id="nameofuser"]                     

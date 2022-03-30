@@ -1,0 +1,4 @@
+input_user:                     //input[@id="sign-username"]
+input_pswd:                     //input[@id="sign-password"]               
+ok_signup:                      //button[@onclick="register()"]
+
