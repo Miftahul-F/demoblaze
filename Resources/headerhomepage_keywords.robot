@@ -30,7 +30,7 @@ Click Button Sign up
     Click Element                   ${button_signup}
 
 Verify button contact
-    Wait Until Element Is Visible   //label[contains(text(),"Email")]
+    Wait Until Element Is Visible     //h5[@class="modal-title" and contains(text(),"New message")]
 
 Verify button about us
     Wait Until Element Is Visible   //h5[contains(text(),"About us")]

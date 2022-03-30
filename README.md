@@ -1,4 +1,4 @@
-# Website Automation (Demoblaze)
+# Website Automation using Robot Framework (Demoblaze)
 
 ## Pre requisites 
 1. VSCode 
@@ -19,4 +19,4 @@
 8. Click ENTER
 
 ## Reports of Test Cases
-![image](https://user-images.githubusercontent.com/96649760/160326681-0b69e669-cb7a-484c-83e3-ea95d97516a1.png)
+

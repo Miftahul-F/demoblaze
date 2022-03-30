@@ -1,89 +1,89 @@
 *** Settings ***
 Documentation                       Order Test
 Library                             SeleniumLibrary
-Variables                           ../Resources/locator.yaml
+Variables                           ../Resources/order_locator.yaml
+Variables                           ../Resources/header_locator.yaml
 
 *** Keywords ***
-Close Browsers
-    Close Browser
-
 Select category phones
-    Click Element                           (//*[@id="itemc"])[1]
+    Click Element                           ${category_phones}
+    Sleep                                   3s
 
 Select category laptops
-    Click Element                           (//*[@id="itemc"])[2]
+    Click Element                           ${category_laptops}
+    Sleep                                   3s
 
 Select category monitors
-    Click Element                           (//*[@id="itemc"])[3]
-
-Scroll until see Iphone 6 32gb
-    Scroll Element Into View                //*[@id="tbodyid"]/div[5]/div/div/h4/a
+    Click Element                           ${category_monitors}
+    Sleep                                   3s
 
 Choose Iphone 6 32gb
-    Click Element                           //*[@id="tbodyid"]/div[5]/div/div/h4/a
+    Scroll Element Into View                ${select_iphone}
+    Click Element                           ${select_iphone}
 
 Go to description page of Iphone 6 32gb
-    Wait Until Page Contains                Iphone 6 32gb
+    Wait Until Page Contains                Product description                   timeout=10
 
-Choose MacBook air
-    Click Element                           //*[@id="tbodyid"]/div[3]/div/div/h4/a
+Choose MacBook Pro
+    Scroll Element Into View                ${select_macbookpro}
+    Click Element                           ${select_macbookpro}
 
 Go to description page of MacBook air
-    Wait Until Page Contains                MacBook air
+    Wait Until Page Contains                MacBook Pro
 
 Choose ASUS Full HD
-    Click Element                           //*[@id="tbodyid"]/div[2]/div/div/h4/a
+    Click Element                           ${select_asusfullhd}
 
 Go to description page of ASUS Full HD
     Wait Until Page Contains                ASUS Full HD
 
 Click button Add to cart
-    CLick Element                           //*[@id="tbodyid"]/div[2]/div/a
+    CLick Element                           ${button_addcart}
 
 Appear allert Product added
     Handle Alert
 
 Click button Home
-    CLick Element                           //*[@id="navbarExample"]/ul/li[1]/a
+    CLick Element                           ${button_home}
 
 Click button cart
-    Click Element                           //*[@id="navbarExample"]/ul/li[4]/a
+    Click Element                           ${button_cart}
 
 Click Place Order
-    Click Element                           //*[@id="page-wrapper"]/div/div[2]/button
-
-Wait page Place Order
-    Wait Until Element Is Visible           //*[@id="orderModalLabel"]
+    Click Element                           ${button_placeorder}
+    Wait Until Element Is Visible           id:orderModalLabel
+    Sleep                                   2s
 
 Input Name
     [Arguments]                             ${name}
-    Input Text                              //*[@id="name"]                             ${name}       
+    Input Text                              ${input_name}                             ${name}       
 
 Input Country
     [Arguments]                             ${country}
-    Input Text                              //*[@id="country"]                          ${country} 
+    Input Text                              ${input_country}                          ${country} 
 
 Input City
     [Arguments]                             ${city}
-    Input Text                              //*[@id="city"]                             ${city}                 
+    Input Text                              ${input_city}                             ${city}                 
 
 Input Credit card
     [Arguments]                             ${card}
-    Input Text                              //*[@id="card"]                             ${card}                 
+    Input Text                              ${input_cc}                               ${card}                 
 
 Input Month
     [Arguments]                             ${Month}
-    Input Text                              //*[@id="month"]                            ${Month}                 
+    Input Text                              ${input_month}                            ${Month}                 
 
 Input Year
     [Arguments]                             ${Year}
-    Input Text                              //*[@id="year"]                             ${Year}           
+    Input Text                              ${input_year}                             ${Year}           
 
 Click button Purchase
-    Click Element                           //*[@id="orderModal"]/div/div/div[3]/button[2]
+    Click Element                           ${button_purchase}
 
-# Verify purchase success
-#     Element Should Be Visible               /html/body/div[9]/p                     
+Verify purchase success
+    Wait Until Page Contains Element        ${purchase_succes}                     
+    Click Element                           ${button_ok}
 
-# Click Ok on purcase success pop up
-#     Click Element                           /html/body/div[10]/div[7]/div/button
+Appear alert Please fill out Name and Creditcard
+    Alert Should Be Present                 Please fill out Name and Creditcard.            ACCEPT

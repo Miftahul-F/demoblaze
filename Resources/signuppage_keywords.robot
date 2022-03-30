@@ -14,7 +14,8 @@ Go to demoblaze page
 
 Navigate to sign up menu
     Click Element                   ${button_signup}
-    Wait Until Element Is Visible   ${ok_signup}
+    Sleep                           3s
+    Wait Until Element Is Visible   //h5[@class="modal-title" and contains(text(),"Sign up")]
 
 Inputting Username
     [Arguments]                     ${user}

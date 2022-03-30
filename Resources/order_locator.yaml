@@ -1,0 +1,17 @@
+category_phones:                            (//*[contains(text(),"Phones")])
+category_laptops:                           (//*[contains(text(),"Laptops")])
+category_monitors:                          (//*[contains(text(),"Monitors")])
+select_iphone:                              (//*[contains(text(),"Iphone 6 32gb")])
+select_macbookpro:                          (//a[contains(text(),"MacBook Pro")])
+select_asusfullhd:                          (//a[contains(text(),"ASUS Full HD")])
+button_addcart:                             (//*[contains(text(),"Add to cart")])
+button_placeorder:                          (//button[contains(text(),"Place Order")])
+input_name:                                 //input[@id="name"]     
+input_country:                              //input[@id="country"]
+input_city:                                 //input[@id="city"]
+input_cc:                                   //input[@id="card"]
+input_month:                                //input[@id="month"]
+input_year:                                 //input[@id="year"]
+button_purchase:                            (//button[contains(text(),"Purchase")])
+purchase_succes:                            //div[@class="sweet-alert  showSweetAlert visible"]
+button_ok:                                  //button[contains(text(),'OK')]

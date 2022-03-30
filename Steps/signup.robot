@@ -28,7 +28,7 @@ I am sign up account using registered username and password
 
 I am sign up account using unregistered username
     [Tags]                                  Positive Test Sign up
-    ${user}                                 FakerLibrary.username
+    ${user}                                 FakerLibrary.User Name
     Go to demoblaze page
     Navigate to sign up menu
     Inputting Username                      ${user}

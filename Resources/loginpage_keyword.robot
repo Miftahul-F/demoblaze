@@ -18,7 +18,8 @@ Go to demoblaze page
 
 Navigate to log in menu
     Click Element                   ${button_login}
-    Wait Until Element Is Visible   //button[@onclick="logIn()"]
+    Sleep                           3s
+    Wait Until Element Is Visible   //h5[@class="modal-title" and contains(text(),"Log in")]
 
 Inputting Username
     [Arguments]                     ${username}
@@ -28,10 +29,12 @@ Inputting Password
     [Arguments]                     ${password}
     Input Text                      ${input_password}                                 ${password}
 
-Click button log in
+Click ok log in
+    Wait Until Element Is Visible   ${ok_login} 
     Click Element                   ${ok_login}
 
 CLick button log out
+    Wait Until Element Is Visible   ${button_logout}
     Click Element                   ${button_logout}
 
 Verify log in success
@@ -54,5 +57,6 @@ Login success
     Navigate to log in menu
     Inputting Username                      ${username.validUser}
     Inputting Password                      ${password.validPass}
-    Click button log in
-    Wait Until Element Is Visible           ${button_logout}                       
+    Click ok log in
+    Wait Until Page Contains Element        ${button_logout}    
+    Sleep                                   2s                   
